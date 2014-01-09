@@ -26,7 +26,7 @@ try:
         html = br.response().read()
         soup = BeautifulSoup.BeautifulSoup(html)
         #find the title
-        movieTitlesFound = soup.find_all(class_='result_text')
+        movieTitlesFound = soup.findAll("td", { "class" : "result_text" })
     except ValueError:
         print('Error reading first page response')
     #Use a counter to limit the amount of movie titles to inspect
@@ -48,7 +48,7 @@ try:
                 html = br.response().read()
                 soup = BeautifulSoup.BeautifulSoup(html)
                 title = soup.find('title').getText()
-                inlineBlocks = soup.find_all(class_='txt-block')
+                inlineBlocks = soup.findAll("div", { "class" : "txt-block" })
             except ValueError:
                 print('Error Reading title link page')
             for inlineBlock in inlineBlocks:
