@@ -1,5 +1,5 @@
 import mechanize
-import bs4
+import BeautifulSoup
 import logging
 logging.basicConfig(level=logging.DEBUG)
 logging.debug('This message should go to the log file')
@@ -24,7 +24,7 @@ try:
         br.open(searchUrl)
         # Read the response with a list of titles using BS4
         html = br.response().read()
-        soup = bs4.BeautifulSoup(html)
+        soup = BeautifulSoup(html)
         #find the title
         movieTitlesFound = soup.find_all(class_='result_text')
     except ValueError:
@@ -46,7 +46,7 @@ try:
                 # read the resulting html via BS so we can get
                 # details to print
                 html = br.response().read()
-                soup = bs4.BeautifulSoup(html)
+                soup = BeautifulSoup(html)
                 title = soup.find('title').getText()
                 inlineBlocks = soup.find_all(class_='txt-block')
             except ValueError:
