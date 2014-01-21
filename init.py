@@ -57,9 +57,10 @@ try:
                         releaseDate = inlineBlock.getText()
                         break
                 except Exception as e:
-                        logging.exception(e)
+                    errorFound =""
 
-            topTenTitleList = topTenTitleList + ' {\n title: ' + title + ',\n release date: ' + releaseDate + '\n },\n'
+            topTenTitleList = topTenTitleList + str(i) +'. ' + 'title: ' + title[:-6] + '; release date: ' + releaseDate[:-21] + '\n'
+            #topTenTitleList = topTenTitleList + str(i) +'. ' + 'title: ' + title[:-6] + '; release date: ' + releaseDate[:-21] + ',\n'
             i += 1
 
 
@@ -69,5 +70,5 @@ except SyntaxError:
 
 
 movieListToPrint = topTenTitleList[:-2]
-print('[\n' + movieListToPrint + '\n]')
+print(movieListToPrint)
 
